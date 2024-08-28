@@ -1,6 +1,9 @@
 # Maven
 /target/
 
+#Gradle
+.gradle
+
 # Eclipse
 .classpath
 .project

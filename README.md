@@ -2,25 +2,25 @@
 
 # PrimeFaces Test
 
-This is a sample maven project that uses <strong>Latest PrimeFaces Release</strong> version. If you have a PrimeFaces issue, please download or fork this project. Then, you should change these files by yourself so that PrimeFaces Team can see your problem. Finally, you can send a link or attach the project. <strong>Please make sure that project is runnable with the command below.</strong>
+This is a sample gradle project that uses <strong>Latest PrimeFaces Release</strong> version. If you have a PrimeFaces issue, please download or fork this project. Then, you should change these files by yourself so that PrimeFaces Team can see your problem. Finally, you can send a link or attach the project. <strong>Please make sure that project is runnable with the command below.</strong>
 
-You can execute the sample with <strong>mvn jetty:run</strong> command and hit <strong>http://localhost:8080/</strong> to run the page.
+You can execute the sample with <strong>gradlew appRun</strong> command and hit <strong>http://localhost:8080/</strong> to run the page.
 
 ### Jakarta EE10 Version
 ***
 
-PrimeFaces Test is setup to run again Jakarta EE10 profile using Jetty 12. You can also use other versions with the available maven profiles: mojarra40, myfaces40
+PrimeFaces Test is setup to run against Jakarta EE10 profile using Gretty. You can also use other versions with the available gradle properties: mojarra40, myfaces40
 
-`mvn clean jetty:run -Pmojarra40`
+`gradlew appRun -Pmojarra40`
 
-`mvn clean jetty:run -Pmyfaces40`
+`gradlew appRun -Pmyfaces40`
 
 ### Server Port
 ***
 
 By default the application runs on port 8080 but if you would like to use a different port you can pass `-Djetty.port=5000` like:
 
-`mvn clean jetty:run -Djetty.port=5000`
+`gradlew appRun -Djetty.port=5000`
 
 
 ### JPA Lazy Datatable

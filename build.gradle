@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.gretty' version '4.1.5'
+}
+
+group = 'org.primefaces'
+version = '1.0-SNAPSHOT'
+description = 'primefaces-test'
+
+repositories {
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        url 'https://repo.maven.apache.org/maven2/'
+    }
+}
+
+configurations {
+    myfaces40
+    mojarra40
+
+    if(project.hasProperty('mojarra40')) {
+        implementation.extendsFrom mojarra40
+    } else {
+        implementation.extendsFrom myfaces40
+    }
+}
+
+
+dependencies {
+    myfaces40 'org.apache.myfaces.core:myfaces-api:4.0.2'
+    myfaces40 'org.apache.myfaces.core:myfaces-impl:4.0.2'
+
+    mojarra40 'org.glassfish:jakarta.faces:4.0.7'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    implementation 'org.projectlombok:lombok:1.18.34'
+    implementation 'org.primefaces:primefaces:14.0.4:jakarta'
+    implementation('org.jboss.weld.servlet:weld-servlet-core:5.1.2.Final') {
+        exclude group: 'jakarta.el', module: 'jakarta.el-api'
+    }
+    implementation 'org.apache.bval:bval-jsr:2.0.6'
+
+    providedCompile 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+}
+
+gretty {
+    httpPort = Integer.valueOf(System.getProperty('jetty.port', '8080'))
+    contextPath = '/'
+    scanInterval = 5
+    host = '0.0.0.0'
+    httpIdleTimeout = 60_000
+    inplace = false
+}
